@@ -4,8 +4,8 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "dev": "nodemon --watch src/server.js",
-    "start": "node src/server.js"
+    "dev": "cross-env NODE_OPTIONS=--import=./instrument.mjs nodemon src/server.js",
+    "start": "cross-env NODE_OPTIONS=--import=./instrument.mjs node src/server.js"
   },
   "keywords": [],
   "author": "",
@@ -13,11 +13,14 @@
   "license": "ISC",
   "dependencies": {
     "@clerk/express": "^1.7.4",
+    "@sentry/node": "^10.1.0",
     "cors": "^2.8.6",
+    "cross-env": "^10.1.0",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
     "inngest": "^3.40.1",
-    "mongoose": "^9.3.3"
+    "mongoose": "^9.3.3",
+    "stream-chat": "^8.60.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
