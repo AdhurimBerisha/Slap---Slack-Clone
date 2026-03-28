@@ -1,5 +1,6 @@
 <h1 align="center">✨ Slack Clone with Chat & Video Calling ✨</h1>
 
+![Slap Website](./Slap.png)
 
 Highlights:
 
