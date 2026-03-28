@@ -2,6 +2,8 @@
 
 ![Slap Website](./Slap.png)
 
+Slap is a full-stack Slack clone designed for seamless team communication, combining real-time messaging, file sharing, polls, and secure authentication with powerful video calling features like screen sharing and recording. Built with scalable technologies, background job processing, and production-grade monitoring, it delivers a modern, reliable collaboration experience for teams of any size.
+
 Highlights:
 
 - 💬 Real-time Messaging with Threads, Reactions & Pinned Messages
