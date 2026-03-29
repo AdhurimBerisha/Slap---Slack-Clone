@@ -40,7 +40,7 @@
       rgba(74, 21, 75, 0.15) 0%,
       transparent 50%
     );
-  padding: 2rem;
+  padding: 1rem;
   position: relative;
   overflow: hidden;
 }
@@ -63,9 +63,9 @@
 }
 
 .chat-container {
-  max-width: 1400px;
+  max-width: 1700px;
   margin: 0 auto;
-  height: calc(100vh - 4rem);
+  height: calc(100vh - 2rem);
   display: flex;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 2rem;
@@ -88,6 +88,8 @@
 /* Channel List Sidebar */
 .str-chat__channel-list {
   height: 100%;
+  width: 340px;
+  min-width: 340px;
   backdrop-filter: blur(25px);
   border: none !important;
   overflow: hidden;
@@ -100,9 +102,9 @@
 
 /* Channel Preview */
 .str-chat__channel-preview-messenger {
-  height: 52px;
+  height: 58px;
   margin: 0.375rem 0;
-  padding: 0.75rem 1rem;
+  padding: 0.875rem 1.1rem;
   border-radius: 1rem;
   display: flex;
   align-items: center;
@@ -646,8 +648,8 @@
   );
   color: white;
   font-weight: 700;
-  font-size: 0.9rem;
-  padding: 1rem 1.25rem;
+  font-size: 1rem;
+  padding: 1.05rem 1.25rem;
   border-radius: 1rem;
   border: 1px solid rgba(114, 9, 183, 0.4);
   cursor: pointer;
@@ -714,7 +716,7 @@
   gap: 0.75rem;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   position: relative;
@@ -770,7 +772,7 @@
 .team-channel-list__message {
   padding: 1rem 1.5rem;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.875rem;
+  font-size: 0.95rem;
   text-align: center;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 0.5rem;
@@ -1064,7 +1066,7 @@
 }
 
 .member-name {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: rgba(255, 255, 255, 0.9);
   font-weight: 500;
 }
@@ -1088,7 +1090,8 @@
   }
 
   .str-chat__channel-list {
-    width: 280px;
+    width: 300px;
+    min-width: 300px;
   }
 
   .brand-name {

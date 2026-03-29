@@ -1,5 +1,4 @@
-type Props = {};
-const CallPage = (props: Props) => {
+const CallPage = () => {
   return <div>CallPage</div>;
 };
 export default CallPage;
