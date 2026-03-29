@@ -1,5 +1,6 @@
 import "../instrument.mjs";
 import express from "express";
+import cors from "cors";
 import { ENV } from "./config/env.js";
 import { connectDb } from "./config/db.js";
 import { clerkMiddleware } from "@clerk/express";
@@ -11,6 +12,7 @@ import * as Sentry from "@sentry/node";
 const app = express();
 
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 app.use(clerkMiddleware());
 
 app.get("/debug-sentry", (req, res) => {
