@@ -1,4 +1,4 @@
-<h1 align="center">✨ Slap - Slack Clone with Chat & Video Calling ✨</h1>
+<h1 align="center">💻 Slap - Slack Clone with Chat & Video Calling </h1>
 
 ![Slap Website](./Slap.png)
 
