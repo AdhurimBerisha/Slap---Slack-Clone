@@ -35,19 +35,14 @@ const UsersList = ({ activeChannel }: UsersListProps) => {
     queryKey: ["users-list", client?.user?.id],
     queryFn: fetchUsers,
     enabled: !!client?.user,
-    staleTime: 1000 * 60 * 5, // 5 mins
+    staleTime: 1000 * 60 * 5,
   });
-
-  // staleTime
-  // what it does: tells React Query the data is "fresh" for 5 minutes
-  // behavior: during these 5 minutes, React Query WON'T refetch the data automatically
 
   const startDirectMessage = async (targetUser: UserResponse) => {
     if (!targetUser || !client?.user) return;
     if (!targetUser.id) return;
 
     try {
-      //  bc stream does not allow channelId to be longer than 64 chars
       const channelId = [client.user.id, targetUser.id]
         .sort()
         .join("-")
@@ -92,7 +87,9 @@ const UsersList = ({ activeChannel }: UsersListProps) => {
           members: [client.user.id, user.id],
         });
         const unreadCount = channel.countUnread();
-        const isActive = Boolean(activeChannel && activeChannel.id === channelId);
+        const isActive = Boolean(
+          activeChannel && activeChannel.id === channelId,
+        );
 
         return (
           <button

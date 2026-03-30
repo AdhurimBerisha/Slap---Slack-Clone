@@ -33,7 +33,6 @@ const HomePage = () => {
     return chatClient.channel("messaging", channelId);
   }, [chatClient, searchParams]);
 
-  // todo: handle this with a better component
   if (error) return <p>Something went wrong...</p>;
   if (isLoading || !chatClient) return <PageLoader />;
 
@@ -87,35 +86,35 @@ const HomePage = () => {
 
                     return (
                       <div className="channel-sections">
-                      <div className="section-header">
-                        <div className="section-title">
-                          <HashIcon className="size-4" />
-                          <span>Channels</span>
+                        <div className="section-header">
+                          <div className="section-title">
+                            <HashIcon className="size-4" />
+                            <span>Channels</span>
+                          </div>
                         </div>
+
+                        {/* todos: add better components here instead of just a simple text  */}
+                        {listProps.loading && (
+                          <div className="loading-message">
+                            Loading channels...
+                          </div>
+                        )}
+                        {listProps.error && (
+                          <div className="error-message">
+                            Error loading channels
+                          </div>
+                        )}
+
+                        <div className="channels-list">{children}</div>
+
+                        <div className="section-header direct-messages">
+                          <div className="section-title">
+                            <UsersIcon className="size-4" />
+                            <span>Direct Messages</span>
+                          </div>
+                        </div>
+                        <UsersList activeChannel={activeChannel} />
                       </div>
-
-                      {/* todos: add better components here instead of just a simple text  */}
-                      {listProps.loading && (
-                        <div className="loading-message">
-                          Loading channels...
-                        </div>
-                      )}
-                      {listProps.error && (
-                        <div className="error-message">
-                          Error loading channels
-                        </div>
-                      )}
-
-                      <div className="channels-list">{children}</div>
-
-                      <div className="section-header direct-messages">
-                        <div className="section-title">
-                          <UsersIcon className="size-4" />
-                          <span>Direct Messages</span>
-                        </div>
-                      </div>
-                      <UsersList activeChannel={activeChannel} />
-                    </div>
                     );
                   }}
                 />

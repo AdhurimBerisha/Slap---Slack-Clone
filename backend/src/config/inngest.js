@@ -7,7 +7,6 @@ import {
   upsertStreamUser,
 } from "./stream.js";
 
-// Create a client to send and receive event
 export const inngest = new Inngest({ id: "slap" });
 
 const syncUser = inngest.createFunction(
@@ -49,5 +48,4 @@ const deleteUserFromDB = inngest.createFunction(
   },
 );
 
-// Create an empty array where we'll export future Inngest functions
 export const functions = [syncUser, deleteUserFromDB];
