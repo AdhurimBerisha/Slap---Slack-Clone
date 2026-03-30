@@ -4,8 +4,6 @@ import "./index.css";
 import App from "./App.tsx";
 import { ClerkProvider } from "@clerk/react";
 import {
-  // Routes,
-  // Route,
   BrowserRouter,
   useLocation,
   useNavigationType,

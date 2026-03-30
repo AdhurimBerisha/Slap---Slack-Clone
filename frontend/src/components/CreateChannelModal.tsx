@@ -41,7 +41,6 @@ const CreateChannelModal = ({ onClose }: CreateChannelModalProps) => {
 
   const { client, setActiveChannel } = useChatContext();
 
-  // fetch users for member selection
   useEffect(() => {
     const fetchUsers = async () => {
       if (!client?.user) return;
@@ -49,10 +48,15 @@ const CreateChannelModal = ({ onClose }: CreateChannelModalProps) => {
       setLoadingUsers(true);
 
       try {
-        const response = await client.queryUsers({}, { name: 1 }, { limit: 100 });
+        const response = await client.queryUsers(
+          {},
+          { name: 1 },
+          { limit: 100 },
+        );
 
         const usersOnly = response.users.filter(
-          (user) => user.id !== currentUserId && !user.id.startsWith("recording-"),
+          (user) =>
+            user.id !== currentUserId && !user.id.startsWith("recording-"),
         );
 
         setUsers(usersOnly || []);
@@ -71,16 +75,6 @@ const CreateChannelModal = ({ onClose }: CreateChannelModalProps) => {
     fetchUsers();
   }, [client]);
 
-  // reset the form on open: this is not needed, we just deleted it later in the video
-  // useEffect(() => {
-  //   setChannelName("");
-  //   setDescription("");
-  //   setChannelType("public");
-  //   setError("");
-  //   setSelectedMembers([]);
-  // }, []);
-
-  // auto-select all users for public channels
   useEffect(() => {
     if (channelType === "public") {
       setSelectedMembers(
@@ -88,8 +82,7 @@ const CreateChannelModal = ({ onClose }: CreateChannelModalProps) => {
           .map((u) => u.id)
           .filter((id): id is string => typeof id === "string"),
       );
-    }
-    else setSelectedMembers([]);
+    } else setSelectedMembers([]);
   }, [channelType, users]);
 
   const validateChannelName = (name: string): string => {
@@ -126,15 +119,12 @@ const CreateChannelModal = ({ onClose }: CreateChannelModalProps) => {
     setError("");
 
     try {
-      // MY COOL CHANNEL !#1 => my-cool-channel-1
       const channelId = channelName
         .toLowerCase()
         .trim()
         .replace(/\s+/g, "-")
         .replace(/[^a-z0-9-_]/g, "")
         .slice(0, 20);
-
-      // prepare the channel data
 
       const validMemberIds = Array.from(
         new Set(
@@ -308,35 +298,35 @@ const CreateChannelModal = ({ onClose }: CreateChannelModalProps) => {
                         typeof user.id === "string",
                     )
                     .map((user) => (
-                    <label key={user.id} className="member-item">
-                      <input
-                        type="checkbox"
-                        checked={Boolean(
-                          user.id && selectedMembers.includes(user.id),
-                        )}
-                        onChange={() => {
-                          if (!user.id) return;
-                          handleMemberToggle(user.id);
-                        }}
-                        className="member-checkbox"
-                      />
-                      {user.image ? (
-                        <img
-                          src={user.image}
-                          alt={user.name || user.id}
-                          className="member-avatar"
+                      <label key={user.id} className="member-item">
+                        <input
+                          type="checkbox"
+                          checked={Boolean(
+                            user.id && selectedMembers.includes(user.id),
+                          )}
+                          onChange={() => {
+                            if (!user.id) return;
+                            handleMemberToggle(user.id);
+                          }}
+                          className="member-checkbox"
                         />
-                      ) : (
-                        <div className="member-avatar member-avatar-placeholder">
-                          <span>
-                            {(user.name || user.id).charAt(0).toUpperCase()}
-                          </span>
-                        </div>
-                      )}
-                      <span className="member-name">
-                        {user.name || user.id}
-                      </span>
-                    </label>
+                        {user.image ? (
+                          <img
+                            src={user.image}
+                            alt={user.name || user.id}
+                            className="member-avatar"
+                          />
+                        ) : (
+                          <div className="member-avatar member-avatar-placeholder">
+                            <span>
+                              {(user.name || user.id).charAt(0).toUpperCase()}
+                            </span>
+                          </div>
+                        )}
+                        <span className="member-name">
+                          {user.name || user.id}
+                        </span>
+                      </label>
                     ))
                 )}
               </div>
